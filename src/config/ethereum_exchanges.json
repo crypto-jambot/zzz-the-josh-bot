@@ -1,0 +1,138 @@
+[
+  {
+    "name": "UNISWAP",
+    "bqDataset": "ethereum",
+    "bqTable": "uniswap_v2_pair_addresses",
+    "outputFilepath": "./src/main/resources/output/uniswapV2PairInfo.jsonl",
+    "factoryAddress": "0x5C69bEe701ef814a2B6a3EDD4B1652CB9cc5aA6f",
+    "routerAddress": "0x7a250d5630B4cF539739dF2C5dAcb4c659F2488D"
+  },
+  {
+    "name": "SUSHISWAP",
+    "bqDataset": "ethereum",
+    "bqTable": "sushiswap_v2_pair_addresses",
+    "outputFilepath": "./src/main/resources/output/sushiswapV2PairInfo.jsonl",
+    "factoryAddress": "0xC0AEe478e3658e2610c5F7A4A2E1777cE9e4f2Ac",
+    "routerAddress": "0xd9e1cE17f2641f24aE83637ab66a2cca9C378B9F"
+  },
+  {
+    "name": "SHIBASWAP",
+    "bqDataset": "ethereum",
+    "bqTable": "shibaswap_v2_pair_addresses",
+    "outputFilepath": "./src/main/resources/output/shibaswapV2PairInfo.jsonl",
+    "factoryAddress": "0x115934131916c8b277dd010ee02de363c09d037c",
+    "routerAddress": "0x03f7724180AA6b939894B5Ca4314783B0b36b329"
+  },
+  {
+    "name": "DEFISWAP",
+    "bqDataset": "ethereum",
+    "bqTable": "defiswap_v2_pair_addresses",
+    "outputFilepath": "./src/main/resources/output/defiswapV2PairInfo.jsonl",
+    "factoryAddress": "0x9DEB29c9a4c7A88a3C0257393b7f3335338D9A9D",
+    "routerAddress": "0xCeB90E4C17d626BE0fACd78b79c9c87d7ca181b3"
+  },
+  {
+    "name": "RADIOSHACK",
+    "bqDataset": "ethereum",
+    "bqTable": "radioshack_v2_pair_addresses",
+    "outputFilepath": "./src/main/resources/output/radioshackV2PairInfo.jsonl",
+    "factoryAddress": "0x91fAe1bc94A9793708fbc66aDcb59087C46dEe10",
+    "routerAddress": "0x3e445e3280C5747a188DB8d0aB7762838A50E4ff"
+  },
+  {
+    "name": "SWAPR",
+    "bqDataset": "ethereum",
+    "bqTable": "swapr_v2_pair_addresses",
+    "outputFilepath": "./src/main/resources/output/swaprV2PairInfo.jsonl",
+    "factoryAddress": "0xd34971BaB6E5E356fd250715F5dE0492BB070452",
+    "routerAddress": "0xB9960d9bcA016e9748bE75dd52F02188B9d0829f"
+  },
+  {
+    "name": "ORIONPROTOCOL",
+    "bqDataset": "ethereum",
+    "bqTable": "orionprotocol_v2_pair_addresses",
+    "outputFilepath": "./src/main/resources/output/orionprotocolV2PairInfo.jsonl",
+    "factoryAddress": "0x5FA0060FcfEa35B31F7A5f6025F0fF399b98Edf1",
+    "routerAddress": "0x0990FC9817d11EE06F188eA47Fa7aed59F58d09C"
+  },
+  {
+    "name": "SASHIMISWAP",
+    "bqDataset": "ethereum",
+    "bqTable": "sashimiswap_v2_pair_addresses",
+    "outputFilepath": "./src/main/resources/output/sashimiswapV2PairInfo.jsonl",
+    "factoryAddress": "0xF028F723ED1D0fE01cC59973C49298AA95c57472",
+    "routerAddress": "0xe4FE6a45f354E845F954CdDeE6084603CEDB9410"
+  },
+  {
+    "name": "ELKFINANCE",
+    "bqDataset": "ethereum",
+    "bqTable": "elkfinance_v2_pair_addresses",
+    "outputFilepath": "./src/main/resources/output/elkfinanceV2PairInfo.jsonl",
+    "factoryAddress": "0x6511eBA915fC1b94b2364289CCa2b27AE5898d80",
+    "routerAddress": "0xb5e9F6C58f548CeE53257304e287b23757eFFCA1"
+  },
+  {
+    "name": "UNICSWAP",
+    "bqDataset": "ethereum",
+    "bqTable": "unicswap_v2_pair_addresses",
+    "outputFilepath": "./src/main/resources/output/unicswapV2PairInfo.jsonl",
+    "factoryAddress": "0xbAcC776b231c571a7e6ab7Bc2C8a099e07153377",
+    "routerAddress": "0xE6E90bC9F3b95cdB69F48c7bFdd0edE1386b135a"
+  },
+  {
+    "name": "BXH",
+    "bqDataset": "ethereum",
+    "bqTable": "bxh_v2_pair_addresses",
+    "outputFilepath": "./src/main/resources/output/bxhV2PairInfo.jsonl",
+    "factoryAddress": "0x8d0fCA60fDf50CFE65e3E667A37Ff3010D6d1e8d",
+    "routerAddress": "0x69CD48f775E10651855cDe0fBF4Afe50a7d839E0"
+  },
+  {
+    "name": "LUASWAP",
+    "bqDataset": "ethereum",
+    "bqTable": "luaswap_v2_pair_addresses",
+    "outputFilepath": "./src/main/resources/output/luaswapV2PairInfo.jsonl",
+    "factoryAddress": "0x0388C1E0f210AbAe597B7DE712B9510C6C36C857",
+    "routerAddress": "0x1d5C6F1607A171Ad52EFB270121331b3039dD83e"
+  },
+  {
+    "name": "EMPIREDEX",
+    "bqDataset": "ethereum",
+    "bqTable": "empiredex_v2_pair_addresses",
+    "outputFilepath": "./src/main/resources/output/empiredexV2PairInfo.jsonl",
+    "factoryAddress": "0xd674b01E778CF43D3E6544985F893355F46A74A5",
+    "routerAddress": "0xe7A504316BebbE540496E29798187c9ECAD6ef4F"
+  },
+  {
+    "name": "CONVERGENCE",
+    "bqDataset": "ethereum",
+    "bqTable": "convergence_v2_pair_addresses",
+    "outputFilepath": "./src/main/resources/output/convergenceV2PairInfo.jsonl",
+    "factoryAddress": "0x4eef5746ED22A2fD368629C1852365bf5dcb79f1",
+    "routerAddress": "0x8Cda39226daf33ae1Aba0C92C34d1a1982Cf0210"
+  },
+  {
+    "name": "YOUSWAP",
+    "bqDataset": "ethereum",
+    "bqTable": "youswap_v2_pair_addresses",
+    "outputFilepath": "./src/main/resources/output/youswapV2PairInfo.jsonl",
+    "factoryAddress": "0xa7028337d3da1f04d638cc3b4dd09411486b49ea",
+    "routerAddress": "0xf80Ddd58E040dF41C0761566295a8c1b75B30770"
+  },
+  {
+    "name": "BAMBOODEFI",
+    "bqDataset": "ethereum",
+    "bqTable": "bamboodefi_v2_pair_addresses",
+    "outputFilepath": "./src/main/resources/output/bamboodefiV2PairInfo.jsonl",
+    "factoryAddress": "0x3823Ac41b77e51bf0E6536CE465479cBdedcaEa9",
+    "routerAddress": "0xa9190Eb4B853Db4538Bbc6d3b0DF5d5240e38Fd3"
+  },
+  {
+    "name": "CAPITALDEX",
+    "bqDataset": "ethereum",
+    "bqTable": "capitaldex_v2_pair_addresses",
+    "outputFilepath": "./src/main/resources/output/capitaldexV2PairInfo.jsonl",
+    "factoryAddress": "0x03407772F5EBFB9B10Df007A2DD6FFf4EdE47B53",
+    "routerAddress": "0xDc6844cED486Ec04803f02F2Ee40BBDBEf615f21"
+  }
+]

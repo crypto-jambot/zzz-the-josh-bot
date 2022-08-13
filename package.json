@@ -1,0 +1,47 @@
+{
+  "name": "the-josh-bot",
+  "version": "1.0.0",
+  "description": "An arbitrage flash loan bot",
+  "main": "src/server.js",
+  "scripts": {
+    "start": "node -r esm .",
+    "dev": "nodemon -r esm ./src/server.js",
+    "doc": "jsdoc -c jsdoc.json"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/joshuasells/the-josh-bot.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/joshuasells/the-josh-bot/issues"
+  },
+  "homepage": "https://github.com/joshuasells/the-josh-bot#readme",
+  "dependencies": {
+    "@alch/alchemy-web3": "^1.4.2",
+    "@ethersproject/contracts": "^5.5.0",
+    "@ethersproject/providers": "^5.5.1",
+    "@ethersproject/solidity": "^5.5.0",
+    "@openzeppelin/contracts": "^4.4.1",
+    "@truffle/hdwallet-provider": "^2.0.7",
+    "@uniswap/sdk": "^3.0.3",
+    "@uniswap/v2-core": "^1.0.1",
+    "@uniswap/v2-periphery": "^1.1.0-beta.0",
+    "babel-polyfill": "^6.26.0",
+    "babel-preset-env": "^1.7.0",
+    "babel-preset-es2015": "^6.24.1",
+    "babel-preset-stage-2": "^6.24.1",
+    "babel-preset-stage-3": "^6.24.1",
+    "babel-register": "^6.26.0",
+    "big.js": "^6.1.1",
+    "dotenv": "^10.0.0",
+    "esm": "^3.2.25",
+    "web3": "^1.6.1",
+    "@google-cloud/bigquery": "^5.12.0"
+  },
+  "devDependencies": {
+    "jsdoc": "^3.6.10",
+    "nodemon": "^2.0.16"
+  }
+}

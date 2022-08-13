@@ -1,0 +1,57 @@
+paste@Joshuas-MBP the-josh-bot % truffle migrate --reset --network bsc
+
+Compiling your contracts...
+===========================
+> Everything is up to date, there is nothing to compile.
+
+
+Starting migrations...
+======================
+> Network name:    'bsc'
+> Network id:      56
+> Block gas limit: 79886308 (0x4c2f7e4)
+
+
+1_initial_migration.js
+======================
+
+   Replacing 'Migrations'
+   ----------------------
+   > transaction hash:    0xa7b33ab99eacd6a4f8acfa084e6d8cd0f54175d0aaf14d6a05cc6f442d92a83d
+   > Blocks: 1            Seconds: 4
+   > contract address:    0xB9e61F25Dd836aE289627432b26F640C51c452cf
+   > block number:        19759366
+   > block timestamp:     1658451127
+   > account:             0x4211ba086D542Db84eF2B01B5560478bf81050E4
+   > balance:             0.894910686888703826
+   > gas used:            248842 (0x3cc0a)
+   > gas price:           5 gwei
+   > value sent:          0 ETH
+   > total cost:          0.00124421 ETH
+
+   > Saving migration to chain.
+   > Saving artifacts
+   -------------------------------------
+   > Total cost:          0.00124421 ETH
+
+
+2_deploy_contracts.js
+=====================
+Error [ERR_UNHANDLED_ERROR] [ERR_UNHANDLED_ERROR]: Unhandled error. ({ code: -32000, message: 'header not found' })
+    at Web3ProviderEngine.emit (events.js:304:17)
+    at /Users/paste/Documents/Documents_Joshua’s_MacBook_Pro/source/blockchain/tradingBots/arbitrage/the-josh-bot/node_modules/web3-provider-engine/index.js:54:14
+    at afterRequest (/Users/paste/Documents/Documents_Joshua’s_MacBook_Pro/source/blockchain/tradingBots/arbitrage/the-josh-bot/node_modules/web3-provider-engine/index.js:148:21)
+    at /Users/paste/Documents/Documents_Joshua’s_MacBook_Pro/source/blockchain/tradingBots/arbitrage/the-josh-bot/node_modules/web3-provider-engine/index.js:174:21
+    at /Users/paste/Documents/Documents_Joshua’s_MacBook_Pro/source/blockchain/tradingBots/arbitrage/the-josh-bot/node_modules/web3-provider-engine/index.js:232:9
+    at /Users/paste/Documents/Documents_Joshua’s_MacBook_Pro/source/blockchain/tradingBots/arbitrage/the-josh-bot/node_modules/async/internal/once.js:12:16
+    at replenish (/Users/paste/Documents/Documents_Joshua’s_MacBook_Pro/source/blockchain/tradingBots/arbitrage/the-josh-bot/node_modules/async/internal/eachOfLimit.js:61:25)
+    at /Users/paste/Documents/Documents_Joshua’s_MacBook_Pro/source/blockchain/tradingBots/arbitrage/the-josh-bot/node_modules/async/internal/eachOfLimit.js:71:9
+    at eachLimit (/Users/paste/Documents/Documents_Joshua’s_MacBook_Pro/source/blockchain/tradingBots/arbitrage/the-josh-bot/node_modules/async/eachLimit.js:43:36)
+    at /Users/paste/Documents/Documents_Joshua’s_MacBook_Pro/source/blockchain/tradingBots/arbitrage/the-josh-bot/node_modules/async/internal/doLimit.js:9:16
+    at end (/Users/paste/Documents/Documents_Joshua’s_MacBook_Pro/source/blockchain/tradingBots/arbitrage/the-josh-bot/node_modules/web3-provider-engine/index.js:211:5)
+    at Request._callback (/Users/paste/Documents/Documents_Joshua’s_MacBook_Pro/source/blockchain/tradingBots/arbitrage/the-josh-bot/node_modules/web3-provider-engine/subproviders/rpc.js:70:28)
+    at Request.self.callback (/Users/paste/Documents/Documents_Joshua’s_MacBook_Pro/source/blockchain/tradingBots/arbitrage/the-josh-bot/node_modules/request/request.js:185:22)
+    at Request.emit (events.js:315:20)
+    at Request.<anonymous> (/Users/paste/Documents/Documents_Joshua’s_MacBook_Pro/source/blockchain/tradingBots/arbitrage/the-josh-bot/node_modules/request/request.js:1154:10)
+    at Request.emit (events.js:315:20)
+paste@Joshuas-MBP the-josh-bot % 

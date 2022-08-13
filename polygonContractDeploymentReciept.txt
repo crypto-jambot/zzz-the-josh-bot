@@ -1,0 +1,82 @@
+paste@Joshuas-MBP the-josh-bot % truffle migrate --network polygon 
+
+Compiling your contracts...
+===========================
+> Compiling ./contracts/Arbitrage.sol
+> Compiling ./contracts/Migrations.sol
+> Compiling @openzeppelin/contracts/token/ERC20/IERC20.sol
+> Compiling @uniswap/v2-periphery/contracts/interfaces/IUniswapV2Router01.sol
+> Compiling @uniswap/v2-periphery/contracts/interfaces/IUniswapV2Router02.sol
+> Compilation warnings encountered:
+
+    Warning: SPDX license identifier not provided in source file. Before publishing, consider adding a comment containing "SPDX-License-Identifier: <SPDX-License>" to each source file. Use "SPDX-License-Identifier: UNLICENSED" for non-open-source code. Please see https://spdx.org for more information.
+--> @uniswap/v2-periphery/contracts/interfaces/IUniswapV2Router01.sol
+
+,Warning: SPDX license identifier not provided in source file. Before publishing, consider adding a comment containing "SPDX-License-Identifier: <SPDX-License>" to each source file. Use "SPDX-License-Identifier: UNLICENSED" for non-open-source code. Please see https://spdx.org for more information.
+--> @uniswap/v2-periphery/contracts/interfaces/IUniswapV2Router02.sol
+
+
+> Artifacts written to /Users/paste/Documents/Documents_Joshua’s_MacBook_Pro/source/blockchain/tradingBots/arbitrage/the-josh-bot/build/contracts
+> Compiled successfully using:
+   - solc: 0.8.9+commit.e5eed63a.Emscripten.clang
+
+
+Starting migrations...
+======================
+> Network name:    'polygon'
+> Network id:      137
+> Block gas limit: 30000000 (0x1c9c380)
+
+
+1_initial_migration.js
+======================
+
+   Deploying 'Migrations'
+   ----------------------
+   > transaction hash:    0x59a13a4dc7f26b63c433ea9922920392fa894dd567868684453c52298183ddf3
+   > Blocks: 2            Seconds: 4
+   > contract address:    0xc156F2f0AD78B8B417F03b02b69E45a6d7743103
+   > block number:        31070942
+   > block timestamp:     1658631673
+   > account:             0x4211ba086D542Db84eF2B01B5560478bf81050E4
+   > balance:             131.546016697834751036
+   > gas used:            250142 (0x3d11e)
+   > gas price:           50 gwei
+   > value sent:          0 ETH
+   > total cost:          0.0125071 ETH
+
+   > Saving migration to chain.
+   > Saving artifacts
+   -------------------------------------
+   > Total cost:           0.0125071 ETH
+
+
+2_deploy_contracts.js
+=====================
+
+   Deploying 'Arbitrage'
+   ---------------------
+   > transaction hash:    0x40db3b61f7033a45ba0259f1f33267ac0512a8031fc2f25accf663e0dd71e09e
+   > Blocks: 2            Seconds: 4
+   > contract address:    0xC0502C32D397f92Ee41C9cfb9D1E48ebE1b2a7d8
+   > block number:        31070949
+   > block timestamp:     1658631687
+   > account:             0x4211ba086D542Db84eF2B01B5560478bf81050E4
+   > balance:             131.474881047834751036
+   > gas used:            1376800 (0x150220)
+   > gas price:           50 gwei
+   > value sent:          0 ETH
+   > total cost:          0.06884 ETH
+
+   > Saving migration to chain.
+   > Saving artifacts
+   -------------------------------------
+   > Total cost:             0.06884 ETH
+
+Summary
+=======
+> Total deployments:   2
+> Final cost:          0.0813471 ETH
+
+
+paste@Joshuas-MBP the-josh-bot % 

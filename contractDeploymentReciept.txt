@@ -1,0 +1,113 @@
+paste@Joshuas-MBP the-josh-bot % truffle migrate --network mainnet
+
+Compiling your contracts...
+===========================
+> Everything is up to date, there is nothing to compile.
+
+
+Migrations dry-run (simulation)
+===============================
+> Network name:    'mainnet-fork'
+> Network id:      1
+> Block gas limit: 30000000 (0x1c9c380)
+
+
+1_initial_migration.js
+======================
+
+   Replacing 'Migrations'
+   ----------------------
+   > block number:        15158069
+   > block timestamp:     1658032325
+   > account:             0x4211ba086D542Db84eF2B01B5560478bf81050E4
+   > balance:             0.372523421546508029
+   > gas used:            250142 (0x3d11e)
+   > gas price:           20 gwei
+   > value sent:          0 ETH
+   > total cost:          0.00500284 ETH
+
+   -------------------------------------
+   > Total cost:          0.00500284 ETH
+
+
+2_deploy_contracts.js
+=====================
+
+   Replacing 'Arbitrage'
+   ---------------------
+   > block number:        15158071
+   > block timestamp:     1658032325
+   > account:             0x4211ba086D542Db84eF2B01B5560478bf81050E4
+   > balance:             0.330715821546508029
+   > gas used:            2044467 (0x1f3233)
+   > gas price:           20 gwei
+   > value sent:          0 ETH
+   > total cost:          0.04088934 ETH
+
+   -------------------------------------
+   > Total cost:          0.04088934 ETH
+
+Summary
+=======
+> Total deployments:   2
+> Final cost:          0.04589218 ETH
+
+
+
+
+Starting migrations...
+======================
+> Network name:    'mainnet'
+> Network id:      1
+> Block gas limit: 30000000 (0x1c9c380)
+
+
+1_initial_migration.js
+======================
+
+   Replacing 'Migrations'
+   ----------------------
+   > transaction hash:    0x2e5fef250c28599e23ff437b359923f24a28d9ca16b0ae420062ffce4ab24ed2
+   > Blocks: 1            Seconds: 4
+   > contract address:    0xf9e9F245Ef7740927731cac1012DeE5D0FB2bBE7
+   > block number:        15158069
+   > block timestamp:     1658032328
+   > account:             0x4211ba086D542Db84eF2B01B5560478bf81050E4
+   > balance:             0.372523421546508029
+   > gas used:            250142 (0x3d11e)
+   > gas price:           20 gwei
+   > value sent:          0 ETH
+   > total cost:          0.00500284 ETH
+
+   > Saving migration to chain.
+   > Saving artifacts
+   -------------------------------------
+   > Total cost:          0.00500284 ETH
+
+
+2_deploy_contracts.js
+=====================
+
+   Replacing 'Arbitrage'
+   ---------------------
+   > transaction hash:    0x1d11a345ba29ca457a257f77c4e99a11eea3b6cfead652eebfee261a29564cad
+   > Blocks: 0            Seconds: 12
+   > contract address:    0xB9e61F25Dd836aE289627432b26F640C51c452cf
+   > block number:        15158071
+   > block timestamp:     1658032341
+   > account:             0x4211ba086D542Db84eF2B01B5560478bf81050E4
+   > balance:             0.330715821546508029
+   > gas used:            2044467 (0x1f3233)
+   > gas price:           20 gwei
+   > value sent:          0 ETH
+   > total cost:          0.04088934 ETH
+
+   > Saving migration to chain.
+   > Saving artifacts
+   -------------------------------------
+   > Total cost:          0.04088934 ETH
+
+Summary
+=======
+> Total deployments:   2
+> Final cost:          0.04589218 ETH

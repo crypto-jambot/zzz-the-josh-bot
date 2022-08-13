@@ -1,0 +1,28 @@
+Attempting Arbitrage...
+
+Trade Complete:
+
+┌─────────────────────────────────┬──────────────────────────────────────────────────────────────────────┐
+│             (index)             │                                Values                                │
+├─────────────────────────────────┼──────────────────────────────────────────────────────────────────────┤
+│        Initial Exchange         │      'pancakeswap (0xccEb1285E1496755000BDCA2933447D18394a46f)'      │
+│         Final Exchange          │        'apeswap (0x0c086FAeBE5661e10788b80a1164c8437E552744)'        │
+│        Flash Loan Token         │         'WBNB (0xbb4CdB9CBd36B01bD1cBaEBF2De08d9173bc095c)'          │
+│         Arbitrage Token         │         'COKO (0xBADbe33079CC56824C35B66a75DBcef6b6c8bbe0)'          │
+│                -                │                                                                      │
+│          Gross Profit           │                        '0.000400553510226294'                        │
+│      Estimated Net Profit       │                       '-0.001903616489773706'                        │
+│       Estimated Gas Price       │                             '5000000000'                             │
+│        Actual Gas Price         │                   '237521349.13727406238292695781'                   │
+│       Estimated Gas Units       │                               '460834'                               │
+│      Actual Gas Units Used      │                              '7020190'                               │
+│   Estimated transaction Cost    │                             '0.00230417'                             │
+│     Actual Transaction Cost     │                            '0.001667445'                             │
+│       ETH Balance Before        │                        '0.877575956888703826'                        │
+│        ETH Balance After        │                        '0.875908511888703826'                        │
+│ Flash Loan Token Balance Before │                                 '0'                                  │
+│ Flash Loan Token Balance After  │                        '0.000400553510226295'                        │
+│  Flash Loan Token Gained/Lost   │                        '0.000400553510226295'                        │
+│           Net Profit            │                     '-0.001266891489773705 WBNB'                     │
+│        Transaction Hash         │ '0x059b2da8eee6baffb0b8fdab24b2bba2f6e6a59527e8625c7c927f654f4a57ea' │
+└─────────────────────────────────┴──────────────────────────────────────────────────────────────────────┘

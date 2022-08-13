@@ -1,0 +1,10 @@
+{
+  "isLocal": false,
+  "isDeployed": true,
+  "executeTrades": false,
+  "nodeProvider": "CHAINSTACK_POLYGON",
+  "uploadToBigQuery": false,
+  "blockchain": "polygon",
+  "bqDataset": "polygon",
+  "bqTable": "profitable_arbs"
+}

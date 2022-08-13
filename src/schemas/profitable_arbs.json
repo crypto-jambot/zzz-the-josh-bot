@@ -1,0 +1,293 @@
+[
+  {
+    "name": "pool0",
+    "type": "RECORD",
+    "mode": "REQUIRED",
+    "fields": [
+      {
+        "name": "exchange",
+        "type": "RECORD",
+        "mode": "REQUIRED",
+        "fields": [
+          {
+            "name": "name",
+            "type": "STRING",
+            "mode": "REQUIRED"
+          },
+          {
+            "name": "routerAddress",
+            "type": "STRING",
+            "mode": "REQUIRED"
+          }
+        ]
+      },
+      {
+        "name": "pairAddress",
+        "type": "STRING",
+        "mode": "REQUIRED"
+      },
+      {
+        "name": "token0",
+        "type": "RECORD",
+        "mode": "REQUIRED",
+        "fields": [
+          {
+            "name": "symbol",
+            "type": "STRING",
+            "mode": "REQUIRED"
+          },
+          {
+            "name": "decimals",
+            "type": "INTEGER",
+            "mode": "REQUIRED"
+          },
+          {
+            "name": "address",
+            "type": "STRING",
+            "mode": "REQUIRED"
+          },
+          {
+            "name": "lendable",
+            "type": "BOOLEAN",
+            "mode": "REQUIRED"
+          }
+        ]
+      },
+      {
+        "name": "token1",
+        "type": "RECORD",
+        "mode": "REQUIRED",
+        "fields": [
+          {
+            "name": "symbol",
+            "type": "STRING",
+            "mode": "REQUIRED"
+          },
+          {
+            "name": "decimals",
+            "type": "INTEGER",
+            "mode": "REQUIRED"
+          },
+          {
+            "name": "address",
+            "type": "STRING",
+            "mode": "REQUIRED"
+          },
+          {
+            "name": "lendable",
+            "type": "BOOLEAN",
+            "mode": "REQUIRED"
+          }
+        ]
+      },
+      {
+        "name": "reserve0",
+        "type": "BIGNUMERIC",
+        "mode": "REQUIRED"
+      },
+      {
+        "name": "reserve1",
+        "type": "BIGNUMERIC",
+        "mode": "REQUIRED"
+      },
+      {
+        "name": "ordered",
+        "type": "BOOLEAN",
+        "mode": "REQUIRED"
+      },
+      {
+        "name": "amountIn",
+        "type": "BIGNUMERIC",
+        "mode": "REQUIRED"
+      },
+      {
+        "name": "amountOut",
+        "type": "BIGNUMERIC",
+        "mode": "REQUIRED"
+      }
+    ]
+  },
+  {
+    "name": "pool1",
+    "type": "RECORD",
+    "mode": "REQUIRED",
+    "fields": [
+      {
+        "name": "exchange",
+        "type": "RECORD",
+        "mode": "REQUIRED",
+        "fields": [
+          {
+            "name": "name",
+            "type": "STRING",
+            "mode": "REQUIRED"
+          },
+          {
+            "name": "routerAddress",
+            "type": "STRING",
+            "mode": "REQUIRED"
+          }
+        ]
+      },
+      {
+        "name": "pairAddress",
+        "type": "STRING",
+        "mode": "REQUIRED"
+      },
+      {
+        "name": "token0",
+        "type": "RECORD",
+        "mode": "REQUIRED",
+        "fields": [
+          {
+            "name": "symbol",
+            "type": "STRING",
+            "mode": "REQUIRED"
+          },
+          {
+            "name": "decimals",
+            "type": "INTEGER",
+            "mode": "REQUIRED"
+          },
+          {
+            "name": "address",
+            "type": "STRING",
+            "mode": "REQUIRED"
+          },
+          {
+            "name": "lendable",
+            "type": "BOOLEAN",
+            "mode": "REQUIRED"
+          }
+        ]
+      },
+      {
+        "name": "token1",
+        "type": "RECORD",
+        "mode": "REQUIRED",
+        "fields": [
+          {
+            "name": "symbol",
+            "type": "STRING",
+            "mode": "REQUIRED"
+          },
+          {
+            "name": "decimals",
+            "type": "INTEGER",
+            "mode": "REQUIRED"
+          },
+          {
+            "name": "address",
+            "type": "STRING",
+            "mode": "REQUIRED"
+          },
+          {
+            "name": "lendable",
+            "type": "BOOLEAN",
+            "mode": "REQUIRED"
+          }
+        ]
+      },
+      {
+        "name": "reserve0",
+        "type": "BIGNUMERIC",
+        "mode": "REQUIRED"
+      },
+      {
+        "name": "reserve1",
+        "type": "BIGNUMERIC",
+        "mode": "REQUIRED"
+      },
+      {
+        "name": "ordered",
+        "type": "BOOLEAN",
+        "mode": "REQUIRED"
+      },
+      {
+        "name": "amountIn",
+        "type": "BIGNUMERIC",
+        "mode": "REQUIRED"
+      },
+      {
+        "name": "amountOut",
+        "type": "BIGNUMERIC",
+        "mode": "REQUIRED"
+      }
+    ]
+  },
+  {
+    "name": "orderedReserves",
+    "type": "BIGNUMERIC",
+    "mode": "REPEATED"
+  },
+  {
+    "name": "grossProfit",
+    "type": "BIGNUMERIC",
+    "mode": "REQUIRED"
+  },
+  {
+    "name": "estimatedGasPrice",
+    "type": "BIGNUMERIC",
+    "mode": "REQUIRED"
+  },
+  {
+    "name": "actualGasPrice",
+    "type": "BIGNUMERIC",
+    "mode": "NULLABLE"
+  },
+  {
+    "name": "estimatedGasUnits",
+    "type": "INTEGER",
+    "mode": "REQUIRED"
+  },
+  {
+    "name": "actualGasUnits",
+    "type": "INTEGER",
+    "mode": "NULLABLE"
+  },
+  {
+    "name": "estimatedTransactionCost",
+    "type": "BIGNUMERIC",
+    "mode": "REQUIRED"
+  },
+  {
+    "name": "actualTransactionCost",
+    "type": "BIGNUMERIC",
+    "mode": "NULLABLE"
+  },
+  {
+    "name": "gasLimit",
+    "type": "INTEGER",
+    "mode": "REQUIRED"
+  },
+  {
+    "name": "estimatedNetProfit",
+    "type": "BIGNUMERIC",
+    "mode": "REQUIRED"
+  },
+  {
+    "name": "actualNetProfit",
+    "type": "BIGNUMERIC",
+    "mode": "NULLABLE"
+  },
+  {
+    "name": "shouldAttemptArbitrage",
+    "type": "BOOLEAN",
+    "mode": "REQUIRED"
+  },
+  {
+    "name": "transactionSuccess",
+    "type": "BOOLEAN",
+    "mode": "NULLABLE"
+  },
+  {
+    "name": "transactionHash",
+    "type": "STRING",
+    "mode": "NULLABLE"
+  },
+  {
+    "name": "insertTimestamp",
+    "type": "TIMESTAMP",
+    "mode": "REQUIRED"
+  }
+]
