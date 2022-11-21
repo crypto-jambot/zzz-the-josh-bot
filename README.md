@@ -9,4 +9,4 @@ An arbitrage flash loan bot
 
 wss://ws-nd-098-564-968.p2pify.com/4e267bf795c27e77369c881438fa2289
 
-<code>ganache -f wss://ws-nd-098-564-968.p2pify.com/4e267bf795c27e77369c881438fa2289 -m "leopard abandon skate crazy mask three window radar welcome visa loud bachelor" -p 8545</code>
+<code>ganache -f wss://ws-nd-877-676-882.p2pify.com/8e9bbeb7da455bdd863ad4b589e1a6d5 -m "leopard abandon skate crazy mask three window radar welcome visa loud bachelor" -p 8545</code>

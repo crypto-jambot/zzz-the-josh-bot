@@ -27,6 +27,9 @@ let exchanges;
 if (!settings.isLocal) {
     account = process.env.META_MASK_ADDRESS;
     switch (settings.nodeProvider) {
+        case 'PastyBOI':
+            web3 = new Web3('ws://0.0.0.0:8546');
+            break;
         case Constants.ALCHEMY:
             web3 = createAlchemyWeb3(`${Constants.ALCHEMY_WRAPPER_ETH_ENDPOINT}${process.env.ALCHEMY_API_KEY}`, { maxRetries: 100 });
             break;

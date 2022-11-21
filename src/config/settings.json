@@ -1,10 +1,10 @@
 {
   "isLocal": false,
   "isDeployed": true,
-  "executeTrades": false,
-  "nodeProvider": "CHAINSTACK_POLYGON",
+  "executeTrades": true,
+  "nodeProvider": "PastyBOI",
   "uploadToBigQuery": false,
-  "blockchain": "polygon",
-  "bqDataset": "polygon",
+  "blockchain": "ethereum",
+  "bqDataset": "ethereum",
   "bqTable": "profitable_arbs"
 }

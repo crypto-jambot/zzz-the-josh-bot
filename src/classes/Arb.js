@@ -7,6 +7,7 @@
  *
  *********************************************************************/
 
+import fs from 'fs';
 import 'dotenv/config';
 import Big from 'big.js';
 import {
@@ -21,7 +22,7 @@ import settings from '../config/settings.json';
 import IArbitrage from '../../build/contracts/Arbitrage.json';
 import { getTokenContract, convertFromWei } from '../util/util';
 import { BigQuery } from '@google-cloud/bigquery';
-const arbitrage = new web3.eth.Contract(IArbitrage.abi, IArbitrage.networks[137].address);
+const arbitrage = new web3.eth.Contract(IArbitrage.abi, IArbitrage.networks[1].address);
 
 export class Arb {
     pool0 = null;
@@ -108,7 +109,7 @@ export class Arb {
             try {
                 gasUnits = await arbitrage.methods
                     .executeTrade(
-                        '0x10Dd6d8A29D489BEDE472CC1b22dc695c144c5c7',
+                        // '0x10Dd6d8A29D489BEDE472CC1b22dc695c144c5c7',
                         this.pool0.ordered ? this.pool0.token0.address : this.pool0.token1.address,
                         this.pool0.ordered ? this.pool0.token1.address : this.pool0.token0.address,
                         this.pool0.amountIn,
@@ -137,91 +138,104 @@ export class Arb {
     };
 
     executeTrade = async () => {
-        console.log(`Attempting Arbitrage...\n`);
+        let running = fs.readFileSync('output/running.txt', 'utf-8');
 
-        const tokenContract = getTokenContract(this.pool0.ordered ? this.pool0.token0.address : this.pool0.token1.address);
-        const balanceBefore = await tokenContract.methods.balanceOf(ACCOUNT).call();
-        const ethBalanceBefore = await web3.eth.getBalance(ACCOUNT);
-        let receipt = null;
+        if (running == 'true') {
+            console.log('Already attrempting a trade.');
+            return;
+        }
 
-        if (settings.executeTrades) {
-            // if (!settings.isLocal) {
-            const networkId = await web3.eth.net.getId();
-            // web3.eth.accounts.wallet.add(process.env.META_MASK_PRIVATE_KEY);
-            const transaction = arbitrage.methods.executeTrade(
-                '0x10Dd6d8A29D489BEDE472CC1b22dc695c144c5c7',
-                this.pool0.ordered ? this.pool0.token0.address : this.pool0.token1.address,
-                this.pool0.ordered ? this.pool0.token1.address : this.pool0.token0.address,
-                this.pool0.amountIn,
-                this.pool0.exchange.routerAddress,
-                this.pool1.exchange.routerAddress
-            );
-            const encodedTransaction = transaction.encodeABI();
-            const nonce = await web3.eth.getTransactionCount(ACCOUNT);
-            const signedTx = await web3.eth.accounts.signTransaction(
-                {
-                    to: arbitrage.options.address,
-                    data: encodedTransaction,
-                    gas: this.gasLimit,
-                    gasPrice: this.estimatedGasPrice,
-                },
-                process.env.META_MASK_PRIVATE_KEY
-            );
-            // console.log(signedTx);
-            try {
-                receipt = await web3.eth.sendSignedTransaction(signedTx.rawTransaction);
-            } catch (err) {
-                console.log(err);
+        fs.writeFileSync('output/running.txt', 'true');
+
+        try {
+            console.log(`Attempting Arbitrage...\n`);
+
+            const tokenContract = getTokenContract(this.pool0.ordered ? this.pool0.token0.address : this.pool0.token1.address);
+            const balanceBefore = await tokenContract.methods.balanceOf(ACCOUNT).call();
+            const ethBalanceBefore = await web3.eth.getBalance(ACCOUNT);
+            let receipt = null;
+
+            if (settings.executeTrades) {
+                // if (!settings.isLocal) {
+                const networkId = await web3.eth.net.getId();
+                // web3.eth.accounts.wallet.add(process.env.META_MASK_PRIVATE_KEY);
+                const transaction = arbitrage.methods.executeTrade(
+                    // '0x10Dd6d8A29D489BEDE472CC1b22dc695c144c5c7',
+                    this.pool0.ordered ? this.pool0.token0.address : this.pool0.token1.address,
+                    this.pool0.ordered ? this.pool0.token1.address : this.pool0.token0.address,
+                    this.pool0.amountIn,
+                    this.pool0.exchange.routerAddress,
+                    this.pool1.exchange.routerAddress
+                );
+                const encodedTransaction = transaction.encodeABI();
+                const nonce = await web3.eth.getTransactionCount(ACCOUNT);
+                const signedTx = await web3.eth.accounts.signTransaction(
+                    {
+                        to: arbitrage.options.address,
+                        data: encodedTransaction,
+                        gas: this.gasLimit,
+                        gasPrice: this.estimatedGasPrice,
+                    },
+                    process.env.META_MASK_PRIVATE_KEY
+                );
+                // console.log(signedTx);
+                try {
+                    receipt = await web3.eth.sendSignedTransaction(signedTx.rawTransaction);
+                } catch (err) {
+                    console.log(err);
+                }
             }
+
+            console.log(receipt ? `Trade Complete:\n` : `Skipped over Trade\n`);
+
+            const balanceAfter = await tokenContract.methods.balanceOf(ACCOUNT).call();
+            const ethBalanceAfter = await web3.eth.getBalance(ACCOUNT);
+            const tokenGained = Big(balanceAfter).minus(Big(balanceBefore)).toString();
+            this.actualTransactionCost = Big(ethBalanceBefore).minus(Big(ethBalanceAfter)).toString();
+            this.actualNetProfit = Big(tokenGained).minus(Big(this.actualTransactionCost)).toString();
+
+            const inputToken = this.pool0.ordered ? this.pool0.token0 : this.pool0.token1;
+            const outputToken = this.pool0.ordered ? this.pool0.token1 : this.pool0.token0;
+
+            if (receipt) {
+                this.actualGasUnits = receipt.gasUsed.toString();
+                this.actualGasPrice = Big(this.actualTransactionCost).div(Big(this.actualGasUnits)).toString();
+                this.transactionSuccess = true;
+                this.transactionHash = receipt.transactionHash;
+            }
+
+            const data = {
+                'Initial Exchange': `${this.pool0.exchange.name} (${this.pool0.pairAddress})`,
+                'Final Exchange': `${this.pool1.exchange.name} (${this.pool1.pairAddress})`,
+                'Flash Loan Token': `${inputToken.symbol} (${inputToken.address})`,
+                'Arbitrage Token': `${outputToken.symbol} (${outputToken.address})`,
+                '-': {},
+                'Gross Profit': convertFromWei(this.grossProfit, inputToken.decimals),
+                'Estimated Net Profit': convertFromWei(this.estimatedNetProfit, inputToken.decimals),
+                '-': {},
+                'Estimated Gas Price': this.estimatedGasPrice.toString(),
+                'Actual Gas Price': receipt ? Big(this.actualTransactionCost).div(Big(receipt.cumulativeGasUsed)).toString() : 'Unknown',
+                'Estimated Gas Units': this.estimatedGasUnits.toString(),
+                'Actual Gas Units Used': receipt ? this.actualGasUnits : 'Unknown',
+                'Estimated transaction Cost': convertFromWei(this.estimatedTransactionCost, inputToken.decimals),
+                'Actual Transaction Cost': receipt ? convertFromWei(this.actualTransactionCost, inputToken.decimals) : 'Unknown',
+                '-': {},
+                'ETH Balance Before': convertFromWei(ethBalanceBefore.toString(), inputToken.decimals),
+                'ETH Balance After': convertFromWei(ethBalanceAfter.toString(), inputToken.decimals),
+                '-': {},
+                'Flash Loan Token Balance Before': convertFromWei(balanceBefore.toString(), outputToken.decimals),
+                'Flash Loan Token Balance After': convertFromWei(balanceAfter.toString(), outputToken.decimals),
+                '-': {},
+                'Flash Loan Token Gained/Lost': convertFromWei(tokenGained, inputToken.decimals),
+                'Net Profit': `${convertFromWei(this.actualNetProfit, inputToken.decimals)} ${inputToken.symbol}`,
+                'Transaction Hash': receipt ? receipt.transactionHash : 'Unknown',
+            };
+
+            this.data = data;
+            console.table(data);
+        } finally {
+            fs.writeFileSync('output/running.txt', 'false');
         }
-
-        console.log(receipt ? `Trade Complete:\n` : `Skipped over Trade\n`);
-
-        const balanceAfter = await tokenContract.methods.balanceOf(ACCOUNT).call();
-        const ethBalanceAfter = await web3.eth.getBalance(ACCOUNT);
-        const tokenGained = Big(balanceAfter).minus(Big(balanceBefore)).toString();
-        this.actualTransactionCost = Big(ethBalanceBefore).minus(Big(ethBalanceAfter)).toString();
-        this.actualNetProfit = Big(tokenGained).minus(Big(this.actualTransactionCost)).toString();
-
-        const inputToken = this.pool0.ordered ? this.pool0.token0 : this.pool0.token1;
-        const outputToken = this.pool0.ordered ? this.pool0.token1 : this.pool0.token0;
-
-        if (receipt) {
-            this.actualGasUnits = receipt.gasUsed.toString();
-            this.actualGasPrice = Big(this.actualTransactionCost).div(Big(this.actualGasUnits)).toString();
-            this.transactionSuccess = true;
-            this.transactionHash = receipt.transactionHash;
-        }
-
-        const data = {
-            'Initial Exchange': `${this.pool0.exchange.name} (${this.pool0.pairAddress})`,
-            'Final Exchange': `${this.pool1.exchange.name} (${this.pool1.pairAddress})`,
-            'Flash Loan Token': `${inputToken.symbol} (${inputToken.address})`,
-            'Arbitrage Token': `${outputToken.symbol} (${outputToken.address})`,
-            '-': {},
-            'Gross Profit': convertFromWei(this.grossProfit, inputToken.decimals),
-            'Estimated Net Profit': convertFromWei(this.estimatedNetProfit, inputToken.decimals),
-            '-': {},
-            'Estimated Gas Price': this.estimatedGasPrice.toString(),
-            'Actual Gas Price': receipt ? Big(this.actualTransactionCost).div(Big(receipt.cumulativeGasUsed)).toString() : 'Unknown',
-            'Estimated Gas Units': this.estimatedGasUnits.toString(),
-            'Actual Gas Units Used': receipt ? this.actualGasUnits : 'Unknown',
-            'Estimated transaction Cost': convertFromWei(this.estimatedTransactionCost, inputToken.decimals),
-            'Actual Transaction Cost': receipt ? convertFromWei(this.actualTransactionCost, inputToken.decimals) : 'Unknown',
-            '-': {},
-            'ETH Balance Before': convertFromWei(ethBalanceBefore.toString(), inputToken.decimals),
-            'ETH Balance After': convertFromWei(ethBalanceAfter.toString(), inputToken.decimals),
-            '-': {},
-            'Flash Loan Token Balance Before': convertFromWei(balanceBefore.toString(), outputToken.decimals),
-            'Flash Loan Token Balance After': convertFromWei(balanceAfter.toString(), outputToken.decimals),
-            '-': {},
-            'Flash Loan Token Gained/Lost': convertFromWei(tokenGained, inputToken.decimals),
-            'Net Profit': `${convertFromWei(this.actualNetProfit, inputToken.decimals)} ${inputToken.symbol}`,
-            'Transaction Hash': receipt ? receipt.transactionHash : 'Unknown',
-        };
-
-        this.data = data;
-        console.table(data);
     };
 
     uploadToBigQuery = async () => {
