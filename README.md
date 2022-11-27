@@ -1,6 +1,6 @@
 # the-josh-bot
 
-##DEPRECATED
+## DEPRECATED
 
 An arbitrage flash loan bot
 
