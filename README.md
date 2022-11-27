@@ -1,5 +1,6 @@
 # the-josh-bot
 
+##DEPRECATED
 An arbitrage flash loan bot
 
 <h2>Starting up Ganache</h2>
